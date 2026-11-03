@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net462</TargetFramework>
+        <RootNamespace>QuickLook.Plugin.ThreeMFViewer</RootNamespace>
+        <AssemblyName>QuickLook.Plugin.ThreeMFViewer</AssemblyName>
+        <UseWPF>true</UseWPF>
+        <LangVersion>latest</LangVersion>
+        <Nullable>disable</Nullable>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <Version>0.1.0</Version>
+        <Product>QuickLook 3MF Viewer</Product>
+        <Authors>Jonathan Corona (soequelle)</Authors>
+        <Copyright>Copyright (c) 2026 Jonathan Corona (soequelle)</Copyright>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Description>Preview 3MF files (Bambu Studio, OrcaSlicer, PrusaSlicer, Cura...) in QuickLook.</Description>
+
+        <!-- Folder where QuickLook is installed; QuickLook.Common.dll is referenced from there. -->
+        <QuickLookDir Condition="'$(QuickLookDir)' == ''">$(LOCALAPPDATA)\Programs\QuickLook</QuickLookDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="System.IO.Compression" />
+        <Reference Include="QuickLook.Common">
+            <HintPath>$(QuickLookDir)\QuickLook.Common.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="QuickLook.Plugin.Metadata.config">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <InternalsVisibleTo Include="RenderTest" />
+    </ItemGroup>
+
+</Project>

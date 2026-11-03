@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net462</TargetFramework>
+        <UseWPF>true</UseWPF>
+        <LangVersion>latest</LangVersion>
+        <PlatformTarget>x64</PlatformTarget>
+        <QuickLookDir Condition="'$(QuickLookDir)' == ''">$(LOCALAPPDATA)\Programs\QuickLook</QuickLookDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\QuickLook.Plugin.ThreeMFViewer\QuickLook.Plugin.ThreeMFViewer.csproj" />
+        <!-- The viewer panel references QuickLook types, so the test needs the dll next to it. -->
+        <Reference Include="QuickLook.Common">
+            <HintPath>$(QuickLookDir)\QuickLook.Common.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+    </ItemGroup>
+
+</Project>
